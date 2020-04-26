@@ -1,4 +1,3 @@
-
 import 'reg_exp_extension.dart';
 import 'package:flutter/services.dart';
 
@@ -16,28 +15,29 @@ class PhoneTextInputFormatter extends TextInputFormatter {
 
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, // unused.
-      TextEditingValue newValue,
-      ) {
+    TextEditingValue oldValue, // unused.
+    TextEditingValue newValue,
+  ) {
     return _selectionAwareTextManipulation(
       newValue,
-          (String substring) {
+      (String substring) {
         return whitelistedPattern
             .allMatches(substring)
             .map<String>((Match match) => match.group(0))
             .join();
-      } ,
+      },
     );
   }
 
   /// A [WhitelistingTextInputFormatter] that takes in digits `[0-9]` only.
-  static final PhoneTextInputFormatter digitsOnly
-  = PhoneTextInputFormatter(RegExpExtension.phone);
+  static final PhoneTextInputFormatter digitsOnly =
+      PhoneTextInputFormatter(RegExpExtension.phone);
 }
+
 TextEditingValue _selectionAwareTextManipulation(
-    TextEditingValue value,
-    String substringManipulation(String substring),
-    ) {
+  TextEditingValue value,
+  String substringManipulation(String substring),
+) {
   final int selectionStartIndex = value.selection.start;
   final int selectionEndIndex = value.selection.end;
   String manipulatedText;
@@ -45,15 +45,12 @@ TextEditingValue _selectionAwareTextManipulation(
   if (selectionStartIndex < 0 || selectionEndIndex < 0) {
     manipulatedText = substringManipulation(value.text);
   } else {
-    final String beforeSelection = substringManipulation(
-        value.text.substring(0, selectionStartIndex)
-    );
+    final String beforeSelection =
+        substringManipulation(value.text.substring(0, selectionStartIndex));
     final String inSelection = substringManipulation(
-        value.text.substring(selectionStartIndex, selectionEndIndex)
-    );
-    final String afterSelection = substringManipulation(
-        value.text.substring(selectionEndIndex)
-    );
+        value.text.substring(selectionStartIndex, selectionEndIndex));
+    final String afterSelection =
+        substringManipulation(value.text.substring(selectionEndIndex));
     manipulatedText = beforeSelection + inSelection + afterSelection;
     if (value.selection.baseOffset > value.selection.extentOffset) {
       manipulatedSelection = value.selection.copyWith(
@@ -69,9 +66,9 @@ TextEditingValue _selectionAwareTextManipulation(
   }
   return TextEditingValue(
     text: manipulatedText,
-    selection: manipulatedSelection ?? const TextSelection.collapsed(offset: -1),
-    composing: manipulatedText == value.text
-        ? value.composing
-        : TextRange.empty,
+    selection:
+        manipulatedSelection ?? const TextSelection.collapsed(offset: -1),
+    composing:
+        manipulatedText == value.text ? value.composing : TextRange.empty,
   );
 }

@@ -1,6 +1,6 @@
 # ax_flutter_util
 
-A new flutter plugin project.
+A new Flutter project.
 
 ## Getting Started
 
