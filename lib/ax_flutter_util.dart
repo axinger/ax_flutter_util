@@ -4,6 +4,8 @@ export 'src/phone_text_input_formatter.dart';
 export 'src/reg_exp_extension.dart';
 export 'src/string_extension.dart';
 export 'src/key_chain.dart';
+export 'src/alert.dart';
+
 
 import 'dart:async';
 import 'package:flutter/services.dart';
