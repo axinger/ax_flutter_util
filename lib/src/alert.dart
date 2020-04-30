@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'date_time_picker_widget.dart' as ax;
 
+/// iOS风格
 class Alert {
   static _flatButton(String text, {VoidCallback callback, TextStyle style}) {
     return FlatButton(
@@ -10,7 +11,7 @@ class Alert {
     );
   }
 
-  /// iOS风格 alert
+  ///  alert
   static showAlert({
     @required BuildContext context,
     title = "",
@@ -62,14 +63,13 @@ class Alert {
       ),
    **/
 
-  /// iOS风格 sheet
-  static showSheet(
-      {@required BuildContext context,
-      String title = "",
-      String message = "",
-      VoidCallback cancelCallback,
-      String cancelText = "取消",
-      List<Widget> actions}) {
+  ///  sheet
+  static showSheet({@required BuildContext context,
+    String title = "",
+    String message = "",
+    VoidCallback cancelCallback,
+    String cancelText = "取消",
+    List<Widget> actions}) {
     showCupertinoModalPopup(
         context: context,
         builder: (context) {
@@ -90,7 +90,7 @@ class Alert {
         });
   }
 
-  /// iOS风格 自定义内容sheet
+  ///  自定义内容sheet
   static showContentSheet({@required BuildContext context, Widget content}) {
     showModalBottomSheet(
         context: context,
@@ -99,13 +99,13 @@ class Alert {
         });
   }
 
-  /// iOS风格 时间选择器
+  ///  时间选择器
   static showDateSheet({
     @required BuildContext context,
   }) {
-    showContentSheet(context: context, content:Container(
+    showContentSheet(context: context, content: Container(
       height: 300,
-      child:  ax.DateTimePickerWidget(),
+      child: ax.DateTimePickerWidget(),
     ));
   }
 }
