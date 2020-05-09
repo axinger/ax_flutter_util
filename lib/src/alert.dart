@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'date_time_picker_widget.dart' as ax;
 
 /// iOS风格
-class Alert {
+class AxAlert {
   static _flatButton(String text, {VoidCallback callback, TextStyle style}) {
     return FlatButton(
       child: Text(text, style: style),
@@ -11,11 +11,44 @@ class Alert {
     );
   }
 
+  ///  alert 只有一个
+  static showCertainAlert({
+    @required BuildContext context,
+    String title,
+    String message,
+    VoidCallback certainCallback,
+    String certainText = "确定",
+  }) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: (title != null && title?.isNotEmpty) ? Text(title) : null,
+            content: (message != null && message?.isNotEmpty)
+                ? Text(message)
+                : null,
+            actions: <Widget>[
+              _flatButton(
+                certainText,
+                style: TextStyle(color: Colors.deepPurple),
+                callback: () {
+                  Navigator.pop(context);
+                  if (certainCallback != null) {
+                    certainCallback();
+                  }
+                },
+              ),
+            ],
+          );
+        });
+  }
+
+
   ///  alert
   static showAlert({
     @required BuildContext context,
-    title = "",
-    message = "",
+    String title,
+    String message,
     VoidCallback certainCallback,
     String certainText = "确定",
     VoidCallback cancelCallback,
@@ -25,8 +58,10 @@ class Alert {
         context: context,
         builder: (context) {
           return CupertinoAlertDialog(
-            title: Text(title),
-            content: Text(message),
+            title: (title != null && title?.isNotEmpty) ? Text(title) : null,
+            content: (message != null && message?.isNotEmpty)
+                ? Text(message)
+                : null,
             actions: <Widget>[
               _flatButton(
                 cancelText,
@@ -65,8 +100,8 @@ class Alert {
 
   ///  sheet
   static showSheet({@required BuildContext context,
-    String title = "",
-    String message = "",
+    String title,
+    String message,
     VoidCallback cancelCallback,
     String cancelText = "取消",
     List<Widget> actions}) {
@@ -74,8 +109,10 @@ class Alert {
         context: context,
         builder: (context) {
           return CupertinoActionSheet(
-            title: Text(title),
-            message: Text(message),
+            title: (title != null && title?.isNotEmpty) ? Text(title) : null,
+            message: (message != null && message?.isNotEmpty)
+                ? Text(message)
+                : null,
             cancelButton: CupertinoActionSheetAction(
               child: Text(cancelText),
               onPressed: () {
