@@ -1,7 +1,7 @@
 extension IterableExtension<E> on Iterable {
   /// Iterable index 不存才就会报错
   E elementAtOfNull(int index) {
-    if (this.length > index) {
+    if ((this != null) && (this.length > index)) {
       return this.elementAt(index);
     } else {
       return null;
@@ -15,7 +15,7 @@ extension IterableExtension<E> on Iterable {
 
   /// 为空
   bool get isEmptyOfNull {
-    return this == null || this.isEmpty;
+    return (this == null) || this.isEmpty;
   }
 }
 

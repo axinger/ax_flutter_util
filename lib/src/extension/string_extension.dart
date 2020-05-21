@@ -16,6 +16,6 @@ extension StringExtension on String {
 
   /// 为空
   bool get isEmptyOfNull {
-    return this == null || this.isEmpty;
+    return (this == null) || this.isEmpty;
   }
 }

@@ -6,6 +6,6 @@ extension MapExtension<E> on Map {
 
   /// 为空
   bool get isEmptyOfNull {
-    return this == null || this.isEmpty;
+    return (this == null) || this.isEmpty;
   }
 }
