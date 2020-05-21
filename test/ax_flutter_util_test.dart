@@ -12,4 +12,10 @@ void main() {
 //  print("===========");
 //  });
   print("===========");
+
+  Set set = Set();
+  Map map ={};
+
+  set.elementAt(0);
+
 }

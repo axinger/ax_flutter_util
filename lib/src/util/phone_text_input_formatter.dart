@@ -1,4 +1,4 @@
-import 'reg_exp_extension.dart';
+import '../extension/reg_exp_extension.dart';
 import 'package:flutter/services.dart';
 
 class PhoneTextInputFormatter extends TextInputFormatter {

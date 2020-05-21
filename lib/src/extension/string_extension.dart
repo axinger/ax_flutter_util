@@ -8,4 +8,14 @@ extension StringExtension on String {
 //    return RegExp(r'^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8])|(19)[0-9])\d{8}$').hasMatch(this);
     return RegExpExtension.phone.hasMatch(this);
   }
+
+  /// 不为空
+  bool get isNotEmptyOfNull {
+    return !this.isEmptyOfNull;
+  }
+
+  /// 为空
+  bool get isEmptyOfNull {
+    return this == null || this.isEmpty;
+  }
 }

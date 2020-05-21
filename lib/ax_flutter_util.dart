@@ -1,9 +1,11 @@
 library ax_flutter_util;
 
-export 'src/alert.dart';
-export 'src/logger.dart';
-export 'src/date_time_picker_widget.dart';
-export 'src/phone_text_input_formatter.dart';
-export 'src/reg_exp_extension.dart';
-export 'src/string_extension.dart';
-export 'src/util_const.dart';
+export 'src/view/alert.dart';
+export 'src/util/util_const.dart';
+
+export 'src/util/logger.dart';
+export 'src/util/phone_text_input_formatter.dart';
+export 'src/extension/reg_exp_extension.dart';
+export 'src/extension/string_extension.dart';
+export 'src/extension/map_extension.dart';
+export 'src/extension/iterable_extension.dart';
