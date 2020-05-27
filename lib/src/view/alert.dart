@@ -17,8 +17,8 @@ Future<T> showCertainAlert<T>({
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: (title != null && title?.isNotEmpty) ? Text(title) : null,
-          content: (message != null && message?.isNotEmpty)
+          title: (title != null && title.isNotEmpty) ? Text(title) : null,
+          content: (message != null && message.isNotEmpty)
               ? Text(message)
               : null,
           actions: <Widget>[
@@ -39,7 +39,7 @@ Future<T> showCertainAlert<T>({
 
 
 ///  alert
-Future<T> showAlert<T>({
+Future<bool> showAlert({
   @required BuildContext context,
   String title,
   String message,
@@ -48,12 +48,12 @@ Future<T> showAlert<T>({
   VoidCallback cancelCallback,
   String cancelText = "取消",
 }) {
-  return showDialog(
+  return showDialog<bool>(
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: (title != null && title?.isNotEmpty) ? Text(title) : null,
-          content: (message != null && message?.isNotEmpty)
+          title: (title != null && title.isNotEmpty) ? Text(title) : null,
+          content: (message != null && message.isNotEmpty)
               ? Text(message)
               : null,
           actions: <Widget>[
@@ -61,7 +61,7 @@ Future<T> showAlert<T>({
               cancelText,
               style: TextStyle(color: Colors.grey),
               callback: () {
-                Navigator.pop(context);
+                Navigator.pop(context,false);
                 if (cancelCallback != null) {
                   cancelCallback();
                 }
@@ -71,7 +71,7 @@ Future<T> showAlert<T>({
               certainText,
               style: TextStyle(color: Colors.deepPurple),
               callback: () {
-                Navigator.pop(context);
+                Navigator.pop(context,true);
                 if (certainCallback != null) {
                   certainCallback();
                 }
