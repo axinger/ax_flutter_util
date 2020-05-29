@@ -18,9 +18,8 @@ Future<T> showCertainAlert<T>({
       builder: (context) {
         return CupertinoAlertDialog(
           title: (title != null && title.isNotEmpty) ? Text(title) : null,
-          content: (message != null && message.isNotEmpty)
-              ? Text(message)
-              : null,
+          content:
+              (message != null && message.isNotEmpty) ? Text(message) : null,
           actions: <Widget>[
             _flatButton(
               certainText,
@@ -37,7 +36,6 @@ Future<T> showCertainAlert<T>({
       });
 }
 
-
 ///  alert
 Future<bool> showAlert({
   @required BuildContext context,
@@ -53,25 +51,24 @@ Future<bool> showAlert({
       builder: (context) {
         return CupertinoAlertDialog(
           title: (title != null && title.isNotEmpty) ? Text(title) : null,
-          content: (message != null && message.isNotEmpty)
-              ? Text(message)
-              : null,
+          content:
+              (message != null && message.isNotEmpty) ? Text(message) : null,
           actions: <Widget>[
-            _flatButton(
-              cancelText,
-              style: TextStyle(color: Colors.grey),
-              callback: () {
-                Navigator.pop(context,false);
+            CupertinoDialogAction(
+              child: Text(
+                cancelText,
+              ),
+              onPressed: () {
+                Navigator.pop(context, false);
                 if (cancelCallback != null) {
                   cancelCallback();
                 }
               },
             ),
-            _flatButton(
-              certainText,
-              style: TextStyle(color: Colors.deepPurple),
-              callback: () {
-                Navigator.pop(context,true);
+            CupertinoDialogAction(
+              child: Text(certainText),
+              onPressed: () {
+                Navigator.pop(context, true);
                 if (certainCallback != null) {
                   certainCallback();
                 }
@@ -93,20 +90,20 @@ Future<bool> showAlert({
  **/
 
 ///  sheet
-Future<T> showSheet<T>({@required BuildContext context,
-  String title,
-  String message,
-  VoidCallback cancelCallback,
-  String cancelText = "取消",
-  List<Widget> actions}) {
+Future<T> showSheet<T>(
+    {@required BuildContext context,
+    String title,
+    String message,
+    VoidCallback cancelCallback,
+    String cancelText = "取消",
+    List<Widget> actions}) {
   return showCupertinoModalPopup(
       context: context,
       builder: (context) {
         return CupertinoActionSheet(
           title: (title != null && title?.isNotEmpty) ? Text(title) : null,
-          message: (message != null && message?.isNotEmpty)
-              ? Text(message)
-              : null,
+          message:
+              (message != null && message?.isNotEmpty) ? Text(message) : null,
           cancelButton: CupertinoActionSheetAction(
             child: Text(cancelText),
             onPressed: () {
@@ -135,10 +132,12 @@ Future<T> showContentSheet<T>(
 Future<T> showDateSheet<T>({
   @required BuildContext context,
 }) {
-  return showContentSheet(context: context, content: Container(
-    height: 300,
-    child: ax.DateTimePickerWidget(),
-  ));
+  return showContentSheet(
+      context: context,
+      content: Container(
+        height: 300,
+        child: ax.DateTimePickerWidget(),
+      ));
 }
 
 ///
@@ -148,4 +147,3 @@ _flatButton(String text, {VoidCallback callback, TextStyle style}) {
     onPressed: callback,
   );
 }
-
