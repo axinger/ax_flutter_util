@@ -2,6 +2,7 @@ library ax_flutter_util;
 
 export 'src/view/alert.dart';
 export 'src/util/util_const.dart';
+export 'src/util/push.dart';
 
 export 'src/util/logger.dart';
 export 'src/util/phone_text_input_formatter.dart';
