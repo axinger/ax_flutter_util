@@ -1,6 +1,6 @@
 library ax_flutter_util;
 
-export 'src/view/alert.dart';
+export 'src/alert/alert.dart';
 export 'src/util/util_const.dart';
 export 'src/util/push.dart';
 
