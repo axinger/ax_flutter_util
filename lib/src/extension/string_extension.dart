@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'reg_exp_extension.dart';
 
 /// 字符串扩展方法
@@ -18,4 +20,15 @@ extension StringExtension on String {
   bool get isEmptyOfNull {
     return (this == null) || this.isEmpty;
   }
+/// 0  78 =>9
+  /// 123456
+  /// 范围替换保持长度
+  String replaceRangeKeepLength({@required int prefixCount,@required int suffixCount,String symbol = '*'}){
+
+    if(this.length<(prefixCount+suffixCount)){
+      return this;
+    }
+    return  this.replaceRange(prefixCount, this.length-suffixCount, symbol*(this.length-prefixCount-suffixCount));
+  }
+
 }
