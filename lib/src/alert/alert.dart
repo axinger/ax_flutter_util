@@ -15,6 +15,7 @@ Future<T> showCertainAlert<T>({
 }) {
   return showDialog(
       context: context,
+      barrierDismissible:false,
       builder: (context) {
         return CupertinoAlertDialog(
           title: (title != null && title.isNotEmpty) ? Text(title) : null,
@@ -48,6 +49,7 @@ Future<bool> showAlert({
 }) {
   return showDialog<bool>(
       context: context,
+      barrierDismissible:false,
       builder: (context) {
         return CupertinoAlertDialog(
           title: (title != null && title.isNotEmpty) ? Text(title) : null,
@@ -99,6 +101,7 @@ Future<T> showSheet<T>(
     List<Widget> actions}) {
   return showCupertinoModalPopup(
       context: context,
+      semanticsDismissible:true,
       builder: (context) {
         return CupertinoActionSheet(
           title: (title != null && title?.isNotEmpty) ? Text(title) : null,
