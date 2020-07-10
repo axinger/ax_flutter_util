@@ -6,7 +6,7 @@ import 'date_time_picker_widget.dart' as ax;
 /// iOS风格
 
 ///  alert 只有一个
-Future<T> showCertainAlert<T>({
+Future<T> showCupertinoCertainAlert<T>({
   @required BuildContext context,
   String title,
   String message,
@@ -37,7 +37,7 @@ Future<T> showCertainAlert<T>({
 }
 
 ///  alert
-Future<bool> showAlert({
+Future<bool> showCupertinoAlert({
   @required BuildContext context,
   String title,
   String message,
@@ -90,7 +90,7 @@ Future<bool> showAlert({
  **/
 
 ///  sheet
-Future<T> showSheet<T>(
+Future<T> showCupertinoSheet<T>(
     {@required BuildContext context,
     String title,
     String message,
@@ -101,9 +101,9 @@ Future<T> showSheet<T>(
       context: context,
       builder: (context) {
         return CupertinoActionSheet(
-          title: (title != null && title?.isNotEmpty) ? Text(title) : null,
+          title: (title != null && title.isNotEmpty) ? Text(title) : null,
           message:
-              (message != null && message?.isNotEmpty) ? Text(message) : null,
+              (message != null && message.isNotEmpty) ? Text(message) : null,
           cancelButton: CupertinoActionSheetAction(
             child: Text(cancelText),
             onPressed: () {
