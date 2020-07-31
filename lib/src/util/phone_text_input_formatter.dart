@@ -1,6 +1,7 @@
 import '../extension/reg_exp_extension.dart';
 import 'package:flutter/services.dart';
 
+/// 电话号码匹配
 class PhoneTextInputFormatter extends TextInputFormatter {
   /// Creates a formatter that allows only the insertion of whitelisted characters patterns.
   ///
