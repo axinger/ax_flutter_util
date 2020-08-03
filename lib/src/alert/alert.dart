@@ -15,7 +15,7 @@ Future<T> showCupertinoCertainAlert<T>({
 }) {
   return showDialog(
       context: context,
-      barrierDismissible:false,
+      barrierDismissible: false,
       builder: (context) {
         return CupertinoAlertDialog(
           title: (title != null && title.isNotEmpty) ? Text(title) : null,
@@ -49,7 +49,7 @@ Future<bool> showCupertinoAlert({
 }) {
   return showDialog<bool>(
       context: context,
-      barrierDismissible:false,
+      barrierDismissible: false,
       builder: (context) {
         return CupertinoAlertDialog(
           title: (title != null && title.isNotEmpty) ? Text(title) : null,
@@ -92,16 +92,17 @@ Future<bool> showCupertinoAlert({
  **/
 
 ///  sheet
-Future<T> showCupertinoSheet<T>(
-    {@required BuildContext context,
-    String title,
-    String message,
-    VoidCallback cancelCallback,
-    String cancelText = "取消",
-    List<Widget> actions}) {
+Future<T> showCupertinoSheet<T>({
+  @required BuildContext context,
+  String title,
+  String message,
+  VoidCallback cancelCallback,
+  String cancelText = "取消",
+  List<CupertinoActionSheetAction> actions,
+}) {
   return showCupertinoModalPopup(
       context: context,
-      semanticsDismissible:true,
+      semanticsDismissible: true,
       builder: (context) {
         return CupertinoActionSheet(
           title: (title != null && title.isNotEmpty) ? Text(title) : null,
