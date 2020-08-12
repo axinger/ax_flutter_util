@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 /// push
 Future<T> push<T>({
   @required BuildContext context,
+  @required Widget widget,
   rootNavigator = true,
-  Widget widget,
 }) {
   return Navigator.of(context, rootNavigator: rootNavigator).push(
     MaterialPageRoute(builder: (context) {
