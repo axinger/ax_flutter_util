@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   logger_flutter: any
-  flutter_cupertino_date_picker: any
+#  flutter_cupertino_date_picker: any
 
 dev_dependencies:
   flutter_test:
