@@ -71,3 +71,46 @@ Future<T> pushCupertino<T>({
     }),
   );
 }
+
+/// pushName 跳转页面
+Future<T> pushName<T>({
+  @required BuildContext context,
+  @required String routeName,
+  Object arguments,
+  bool rootNavigator,
+}) {
+  return Navigator.of(context, rootNavigator: rootNavigator)
+      .pushNamed(routeName, arguments: arguments);
+}
+
+/// pushNamedAndRemoveUntil 跳转页面
+Future<T> pushNamedAndRemoveUntil<T>({
+  @required BuildContext context,
+  @required String routeName,
+  @required RoutePredicate predicate,
+  Object arguments,
+  bool rootNavigator,
+}) {
+  return Navigator.of(context, rootNavigator: rootNavigator)
+      .pushNamedAndRemoveUntil(routeName, predicate, arguments: arguments);
+}
+
+/// pushReplacementNamed 跳转页面
+Future<T> pushReplacementNamed<T extends Object, TO extends Object>({
+  @required BuildContext context,
+  @required String routeName,
+  @required RoutePredicate predicate,
+  Object arguments,
+  TO result,
+  bool rootNavigator,
+}) {
+  return Navigator.of(context, rootNavigator: rootNavigator)
+      .pushReplacementNamed(routeName, result: result, arguments: arguments);
+}
+
+/// pushName 获得参数
+T pushNameOfArguments<T extends Object>({
+  @required BuildContext context,
+}) {
+  return ModalRoute.of(context).settings.arguments;
+}
