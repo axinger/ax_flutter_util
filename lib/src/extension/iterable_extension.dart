@@ -1,6 +1,6 @@
 extension IterableExtension<E> on Iterable {
   /// Iterable index 不存才就会报错
-  E elementAtOfNull(int index) {
+  E? elementAtOfNull(int index) {
     if ((this != null) && (this.length > index)) {
       return this.elementAt(index);
     } else {

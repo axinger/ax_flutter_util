@@ -6,11 +6,11 @@ import 'date_time_picker_widget.dart' as ax;
 /// iOS风格
 
 ///  alert 只有一个
-Future<T> showCupertinoCertainAlert<T>({
-  @required BuildContext context,
-  String title,
-  String message,
-  VoidCallback certainCallback,
+Future<T?> showCupertinoCertainAlert<T>({
+  required BuildContext context,
+  String title = '',
+  String message = '',
+  VoidCallback? certainCallback,
   String certainText = "确定",
 }) {
   return showDialog(
@@ -18,9 +18,8 @@ Future<T> showCupertinoCertainAlert<T>({
       barrierDismissible: false,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: (title != null && title.isNotEmpty) ? Text(title) : null,
-          content:
-              (message != null && message.isNotEmpty) ? Text(message) : null,
+          title: (title.isNotEmpty) ? Text(title) : null,
+          content: (message.isNotEmpty) ? Text(message) : null,
           actions: <Widget>[
             _flatButton(
               certainText,
@@ -38,13 +37,13 @@ Future<T> showCupertinoCertainAlert<T>({
 }
 
 ///  alert
-Future<bool> showCupertinoAlert({
-  @required BuildContext context,
-  String title,
-  String message,
-  VoidCallback certainCallback,
+Future<bool?> showCupertinoAlert({
+  required BuildContext context,
+  String title = '',
+  String message = '',
+  VoidCallback? certainCallback,
   String certainText = "确定",
-  VoidCallback cancelCallback,
+  VoidCallback? cancelCallback,
   String cancelText = "取消",
 }) {
   return showDialog<bool>(
@@ -52,9 +51,8 @@ Future<bool> showCupertinoAlert({
       barrierDismissible: false,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: (title != null && title.isNotEmpty) ? Text(title) : null,
-          content:
-              (message != null && message.isNotEmpty) ? Text(message) : null,
+          title: (title.isNotEmpty) ? Text(title) : null,
+          content: (message.isNotEmpty) ? Text(message) : null,
           actions: <Widget>[
             CupertinoDialogAction(
               child: Text(
@@ -92,22 +90,21 @@ Future<bool> showCupertinoAlert({
  **/
 
 ///  sheet
-Future<T> showCupertinoSheet<T>({
-  @required BuildContext context,
-  String title,
-  String message,
-  VoidCallback cancelCallback,
+Future<T?> showCupertinoSheet<T>({
+  required BuildContext context,
+  String title = '',
+  String message = '',
+  VoidCallback? cancelCallback,
   String cancelText = "取消",
-  List<CupertinoActionSheetAction> actions,
+  List<CupertinoActionSheetAction>? actions,
 }) {
   return showCupertinoModalPopup(
       context: context,
       semanticsDismissible: true,
       builder: (context) {
         return CupertinoActionSheet(
-          title: (title != null && title.isNotEmpty) ? Text(title) : null,
-          message:
-              (message != null && message.isNotEmpty) ? Text(message) : null,
+          title: (title.isNotEmpty) ? Text(title) : null,
+          message: (message.isNotEmpty) ? Text(message) : null,
           cancelButton: CupertinoActionSheetAction(
             child: Text(cancelText),
             onPressed: () {
@@ -123,8 +120,10 @@ Future<T> showCupertinoSheet<T>({
 }
 
 ///  自定义内容sheet
-Future<T> showContentSheet<T>(
-    {@required BuildContext context, Widget content}) {
+Future<T?> showContentSheet<T>({
+  required BuildContext context,
+  required Widget content,
+}) {
   return showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -133,8 +132,8 @@ Future<T> showContentSheet<T>(
 }
 
 ///  时间选择器
-Future<T> showDateSheet<T>({
-  @required BuildContext context,
+Future<T?> showDateSheet<T>({
+  required BuildContext context,
 }) {
   return showContentSheet(
       context: context,
@@ -145,7 +144,11 @@ Future<T> showDateSheet<T>({
 }
 
 ///
-_flatButton(String text, {VoidCallback callback, TextStyle style}) {
+_flatButton(
+  String text, {
+  VoidCallback? callback,
+  TextStyle? style,
+}) {
   return FlatButton(
     child: Text(text, style: style),
     onPressed: callback,

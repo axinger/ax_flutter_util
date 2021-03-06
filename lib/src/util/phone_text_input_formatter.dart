@@ -24,7 +24,7 @@ class PhoneTextInputFormatter extends TextInputFormatter {
       (String substring) {
         return whitelistedPattern
             .allMatches(substring)
-            .map<String>((Match match) => match.group(0))
+            .map<String>((Match match) => match.group(0)!)
             .join();
       },
     );
@@ -42,7 +42,7 @@ TextEditingValue _selectionAwareTextManipulation(
   final int selectionStartIndex = value.selection.start;
   final int selectionEndIndex = value.selection.end;
   String manipulatedText;
-  TextSelection manipulatedSelection;
+  TextSelection manipulatedSelection = const TextSelection.collapsed(offset: -1);
   if (selectionStartIndex < 0 || selectionEndIndex < 0) {
     manipulatedText = substringManipulation(value.text);
   } else {
@@ -68,7 +68,7 @@ TextEditingValue _selectionAwareTextManipulation(
   return TextEditingValue(
     text: manipulatedText,
     selection:
-        manipulatedSelection ?? const TextSelection.collapsed(offset: -1),
+        manipulatedSelection,
     composing:
         manipulatedText == value.text ? value.composing : TextRange.empty,
   );

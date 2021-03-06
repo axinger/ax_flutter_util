@@ -15,8 +15,11 @@ const String yyyyMMdd = 'yyyy-MM-dd';
 const String E = 'E';
 
 extension DateTimeExtension on DateTime {
-  String format({String format = yyyyMMddHHmmss, String locale}) {
-    return DateFormat(format,locale).format(this);
+  String format({
+    String format = yyyyMMddHHmmss,
+    String? locale,
+  }) {
+    return DateFormat(format, locale).format(this);
   }
 }
 

@@ -6,7 +6,7 @@ extension ColorExtension on Color {
 
   MaterialColor toMaterialColor(Color color) {
     List strengths = <double>[.05];
-    Map swatch = <int, Color>{};
+    var swatch = <int, Color>{};
     final int r = color.red, g = color.green, b = color.blue;
 
     for (int i = 1; i < 10; i++) {

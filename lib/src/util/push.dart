@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// push
-Future<T> push<T>({
-  @required BuildContext context,
-  @required Widget widget,
+Future<T?> push<T>({
+  required BuildContext context,
+  required Widget widget,
   rootNavigator = true,
 }) {
   return Navigator.of(context, rootNavigator: rootNavigator).push(
@@ -15,10 +15,10 @@ Future<T> push<T>({
 }
 
 /// push 跳转并当前页面为根视图
-Future<T> pushAndRemoveUntil<T>({
-  @required BuildContext context,
+Future<T?> pushAndRemoveUntil<T>({
+  required BuildContext context,
   rootNavigator = true,
-  Widget widget,
+  required Widget widget,
 }) {
 //  return Navigator.pushAndRemoveUntil(context,
 //      MaterialPageRoute(builder: (context) {
@@ -32,10 +32,10 @@ Future<T> pushAndRemoveUntil<T>({
 }
 
 /// push 跳转并替换当前页面
-Future<T> pushReplacement<T>({
-  @required BuildContext context,
+Future<T?> pushReplacement<T>({
+  required BuildContext context,
   rootNavigator = true,
-  Widget widget,
+  required Widget widget,
 }) {
 //  return Navigator.pushReplacement(context,
 //      MaterialPageRoute(builder: (context) {
@@ -53,16 +53,16 @@ Future<T> pushReplacement<T>({
 /// [result]返回结果
 pop<T>(
   BuildContext context, [
-  T result,
+  T? result,
 ]) {
   Navigator.pop(context, result);
 }
 
 ///[rootNavigator] 是否隐藏 底部bottomBar 默认隐藏
-Future<T> pushCupertino<T>({
-  @required BuildContext context,
+Future<T?> pushCupertino<T>({
+  required BuildContext context,
   bool rootNavigator = true,
-  Widget widget,
+  required Widget widget,
 }) {
   /// 需要配合使用 iOS风格push
   return Navigator.of(context, rootNavigator: rootNavigator).push(
@@ -73,44 +73,44 @@ Future<T> pushCupertino<T>({
 }
 
 /// pushName 跳转页面
-Future<T> pushName<T>({
-  @required BuildContext context,
-  @required String routeName,
-  Object arguments,
-  bool rootNavigator,
+Future<T?> pushName<T>({
+  required BuildContext context,
+  required String routeName,
+  Object? arguments,
+  bool rootNavigator = false,
 }) {
   return Navigator.of(context, rootNavigator: rootNavigator)
       .pushNamed(routeName, arguments: arguments);
 }
 
 /// pushNamedAndRemoveUntil 跳转页面
-Future<T> pushNamedAndRemoveUntil<T>({
-  @required BuildContext context,
-  @required String routeName,
-  @required RoutePredicate predicate,
-  Object arguments,
-  bool rootNavigator,
+Future<T?> pushNamedAndRemoveUntil<T>({
+  required BuildContext context,
+  required String routeName,
+  required RoutePredicate predicate,
+  Object? arguments,
+  bool rootNavigator = false,
 }) {
   return Navigator.of(context, rootNavigator: rootNavigator)
       .pushNamedAndRemoveUntil(routeName, predicate, arguments: arguments);
 }
 
 /// pushReplacementNamed 跳转页面
-Future<T> pushReplacementNamed<T extends Object, TO extends Object>({
-  @required BuildContext context,
-  @required String routeName,
-  @required RoutePredicate predicate,
-  Object arguments,
-  TO result,
-  bool rootNavigator,
+Future<T?> pushReplacementNamed<T extends Object, TO extends Object>({
+  required BuildContext context,
+  required String routeName,
+  required RoutePredicate predicate,
+  Object? arguments,
+  TO? result,
+  bool rootNavigator = false,
 }) {
   return Navigator.of(context, rootNavigator: rootNavigator)
       .pushReplacementNamed(routeName, result: result, arguments: arguments);
 }
 
 /// pushName 获得参数
-T pushNameOfArguments<T extends Object>({
-  @required BuildContext context,
+Object? pushNameOfArguments<T extends Object>({
+  required BuildContext context,
 }) {
-  return ModalRoute.of(context).settings.arguments;
+  return ModalRoute.of(context)!.settings.arguments;
 }

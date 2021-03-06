@@ -23,7 +23,7 @@ extension StringExtension on String {
 /// 0  78 =>9
   /// 123456
   /// 范围替换保持长度
-  String replaceRangeKeepLength({@required int prefixCount,@required int suffixCount,String symbol = '*'}){
+  String replaceRangeKeepLength({required int prefixCount,required int suffixCount,String symbol = '*'}){
 
     if(this.length<(prefixCount+suffixCount)){
       return this;
