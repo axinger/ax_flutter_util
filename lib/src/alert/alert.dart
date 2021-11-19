@@ -119,6 +119,35 @@ Future<T?> showCupertinoSheet<T>({
       });
 }
 
+/// 底部弹出,可以滚动的
+/// [context] context
+/// [child] 子视图
+/// [isScroll] 文本输入,是否全部滚动
+/// [isRoundedCorners] 是否需要圆角,圆角需要backgroundColor透明
+Future<T?> showScrollSheet<T>({
+  required BuildContext context,
+  required Widget child,
+  bool isScroll = false,
+  bool isRoundedCorners = false,
+}) {
+  return showModalBottomSheet(
+    context: context,
+    isScrollControlled: isScroll, // !important
+    backgroundColor: isRoundedCorners ? Colors.transparent : null, // 圆角
+    builder: (BuildContext context) {
+      if (!isScroll) return child;
+      // !important
+      return SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom), // !important
+          child: child,
+        ),
+      );
+    },
+  );
+}
+
 ///  自定义内容sheet
 Future<T?> showContentSheet<T>({
   required BuildContext context,
