@@ -10,6 +10,6 @@ export 'src/extension/reg_exp_extension.dart';
 export 'src/extension/string_extension.dart';
 export 'src/extension/map_extension.dart';
 export 'src/extension/iterable_extension.dart';
-export 'src/extension/text_input_formatter_extension.dart';
+// export 'src/extension/text_input_formatter_extension.dart';
 export 'src/extension/date_time_extension.dart';
 export 'src/extension/int_extension.dart';
