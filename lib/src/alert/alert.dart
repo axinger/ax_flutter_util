@@ -178,7 +178,7 @@ _flatButton(
   VoidCallback? callback,
   TextStyle? style,
 }) {
-  return FlatButton(
+  return TextButton(
     child: Text(text, style: style),
     onPressed: callback,
   );
